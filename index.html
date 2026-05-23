@@ -17,7 +17,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #fefbf5;  /* warm off-white, light & friendly */
+      background: #fefbf5;
       color: #1e2a2f;
       line-height: 1.5;
       scroll-behavior: smooth;
@@ -29,7 +29,6 @@
       padding: 2rem 1.5rem;
     }
 
-    /* Header / Nav */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -69,7 +68,6 @@
       color: #e06c2e;
     }
 
-    /* Buttons */
     .btn {
       display: inline-block;
       background: #f0a34b;
@@ -88,17 +86,7 @@
       background: #d47c2c;
       transform: translateY(-2px);
     }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #f0a34b;
-      color: #e07c2c;
-    }
-    .btn-outline:hover {
-      background: #f0a34b;
-      color: white;
-    }
 
-    /* Hero section */
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -137,7 +125,6 @@
       color: #6b5a47;
     }
 
-    /* Section headings */
     .section-title {
       font-size: 2rem;
       font-weight: 700;
@@ -156,7 +143,6 @@
       border-radius: 4px;
     }
 
-    /* Video showcase grid */
     .videos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -180,9 +166,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 2rem;
-      position: relative;
     }
     .video-thumb iframe {
       width: 100%;
@@ -197,7 +180,6 @@
       margin-bottom: 0.3rem;
     }
 
-    /* Offers cards */
     .offers-grid {
       display: flex;
       flex-wrap: wrap;
@@ -211,7 +193,6 @@
       padding: 1.8rem;
       border-radius: 28px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-      transition: all 0.2s;
       border: 1px solid #ffe2cf;
     }
     .offer-card i {
@@ -224,7 +205,6 @@
       margin-bottom: 0.8rem;
     }
 
-    /* Feedback section */
     .feedback-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -233,7 +213,6 @@
     }
     .feedback-card {
       background: #ffffffdb;
-      backdrop-filter: blur(2px);
       border-radius: 28px;
       padding: 1.5rem;
       box-shadow: 0 10px 18px rgba(0, 0, 0, 0.03);
@@ -253,7 +232,6 @@
       margin-top: 0.5rem;
     }
 
-    /* Form Section */
     .form-section {
       background: #fff6ed;
       border-radius: 40px;
@@ -310,7 +288,6 @@
       padding: 1rem;
     }
 
-    /* article spice */
     .article-spice {
       background: linear-gradient(120deg, #fff3e8, #ffffff);
       border-radius: 32px;
@@ -329,17 +306,6 @@
       border-top: 1px solid #ffe0cf;
       margin-top: 2rem;
       color: #8b765f;
-    }
-
-    /* Success message */
-    .success-message {
-      background: #d4edda;
-      color: #155724;
-      padding: 1rem;
-      border-radius: 28px;
-      margin-bottom: 1rem;
-      text-align: center;
-      display: none;
     }
 
     @media (max-width: 700px) {
@@ -368,7 +334,6 @@
 </nav>
 
 <main class="container">
-  <!-- Hero + little pricing highlight -->
   <div class="hero">
     <div class="hero-text">
       <div class="hero-badge"><i class="fas fa-robot"></i> AI Cinematic Revolution</div>
@@ -385,7 +350,6 @@
     </div>
   </div>
 
-  <!-- SECTION: Videos posted by me / examples -->
   <div id="videos">
     <h2 class="section-title">📹 Latest Cinematic Constructions</h2>
     <div class="videos-grid">
@@ -420,7 +384,6 @@
     <p style="margin-top: 1rem; text-align:center;"><i class="fas fa-play-circle"></i> Watch real samples — all made with AI + CapCut workflow</p>
   </div>
 
-  <!-- OFFER SECTION - what I teach -->
   <div id="offers" style="margin-top: 4rem;">
     <h2 class="section-title">🔥 What I Offer You</h2>
     <div class="offers-grid">
@@ -442,7 +405,6 @@
     </div>
   </div>
 
-  <!-- FEEDBACK SECTION from students -->
   <div id="feedback" style="margin-top: 4rem;">
     <h2 class="section-title">💬 Student Reviews</h2>
     <div class="feedback-grid">
@@ -469,7 +431,6 @@
     </div>
   </div>
 
-  <!-- SPICE ARTICLE to add storytelling -->
   <div class="article-spice">
     <i class="fas fa-quote-left" style="font-size: 2rem; color:#e68a2e; opacity:0.5;"></i>
     <h3>Why AI Construction + YouTube Automation is the next big wave</h3>
@@ -477,22 +438,16 @@
     <p style="margin-top: 1rem;"><strong>🚀 Limited bonus:</strong> Enroll now and receive 10+ cinematic CapCut templates & AI prompt library for free!</p>
   </div>
 
-  <!-- FORM SECTION with Formspree - YOUR ENDPOINT INTEGRATED -->
+  <!-- FORM SECTION -->
   <div id="form">
     <div class="form-section">
       <h2 class="section-title" style="margin-bottom: 1rem;">📝 Secure Your Spot</h2>
-      <p>Course fee: <strong>₦5,000 only</strong> (one-time payment, lifetime access). Fill the form and you'll be redirected to payment/thank you page details.</p>
+      <p>Course fee: <strong>₦5,000 only</strong> (one-time payment, lifetime access). Fill the form and you'll be redirected to our thank you page.</p>
       
       <div class="disclaimer">
         <i class="fas fa-exclamation-triangle"></i> DISCLAIMER: If you are NOT ready to make payment of ₦5,000, please do NOT fill this form. By submitting, you confirm serious intent to enroll.
       </div>
 
-      <!-- Success message (hidden by default) -->
-      <div id="successMessage" class="success-message">
-        ✓ Form submitted successfully! Redirecting...
-      </div>
-
-      <!-- YOUR FORMSPREE ENDPOINT IS HERE -->
       <form id="enrollForm" action="https://formspree.io/f/xgoqznyp" method="POST">
         <div class="form-row">
           <div class="form-group">
@@ -513,19 +468,15 @@
           <textarea rows="2" id="message" name="message" placeholder="I'm excited to learn AI cinematic construction..."></textarea>
         </div>
         
-        <!-- Redirect to thank you page after successful submission -->
-        <!-- Note: Create a thankyou.html file or remove this line to show default Formspree thank you -->
-        <input type="hidden" name="_redirect" value="https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO/thankyou.html">
+        <!-- Redirect to thank you page folder after successful submission -->
+        <input type="hidden" name="_redirect" value="https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO/thank-you/">
         
-        <!-- Optional: Email subject -->
         <input type="hidden" name="_subject" value="New AI Course Enrollment!">
-        
-        <!-- Spam prevention -->
         <input type="text" name="_gotcha" style="display:none">
         
         <button type="submit" class="btn" id="submitBtn"><i class="fab fa-whatsapp"></i> Enroll Now - ₦5,000</button>
       </form>
-      <p style="margin-top: 1rem; font-size: 0.8rem; text-align: center;">✅ After submitting, you'll receive payment details on WhatsApp & email. Secure your slot.</p>
+      <p style="margin-top: 1rem; font-size: 0.8rem; text-align: center;">✅ After submitting, you'll be redirected to our thank you page.</p>
     </div>
   </div>
 </main>
@@ -536,67 +487,6 @@
 </footer>
 
 <script>
-  // Handle form submission with AJAX for better user experience
-  const form = document.getElementById('enrollForm');
-  const successMessage = document.getElementById('successMessage');
-  
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      // Get submit button and disable it to prevent multiple submissions
-      const submitBtn = document.getElementById('submitBtn');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-      submitBtn.disabled = true;
-      
-      // Collect form data
-      const formData = new FormData(form);
-      
-      try {
-        // Send to Formspree
-        const response = await fetch('https://formspree.io/f/xgoqznyp', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          // Show success message
-          successMessage.style.display = 'block';
-          
-          // Clear form
-          form.reset();
-          
-          // Redirect to thank you page after 2 seconds
-          setTimeout(() => {
-            // If you have a thank you page, uncomment the line below and update the URL
-            // window.location.href = 'thankyou.html';
-            
-            // If you don't have a thank you page yet, show an alert instead
-            alert('Thank you for your submission! You will receive payment details on your WhatsApp and Email within 24 hours.');
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-            successMessage.style.display = 'none';
-          }, 2000);
-        } else {
-          // Handle error
-          const errorData = await response.json();
-          alert('Submission failed: ' + (errorData.error || 'Please try again.'));
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Network error. Please check your connection and try again.');
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }
-    });
-  }
-  
   // Smooth scrolling for navigation links
   document.querySelectorAll('.nav-links a, .hero .btn').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
