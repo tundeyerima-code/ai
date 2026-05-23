@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - AI Cinematic Course</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fefbf5 0%, #fff7f0 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .thankyou-container {
+      max-width: 700px;
+      width: 100%;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .thankyou-card {
+      background: white;
+      border-radius: 48px;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+      border: 1px solid #ffe2cf;
+    }
+
+    .success-icon {
+      width: 100px;
+      height: 100px;
+      background: #d4edda;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .success-icon i {
+      font-size: 3.5rem;
+      color: #2b9348;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #2d2b26;
+      margin-bottom: 1rem;
+    }
+
+    .price-badge {
+      background: linear-gradient(135deg, #c4451b, #e98a3e);
+      color: white;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 1rem 0;
+    }
+
+    .message-box {
+      background: #fff6ed;
+      border-radius: 28px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+
+    .message-box h3 {
+      color: #c4451b;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .message-box p {
+      color: #4a3b2c;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .payment-details {
+      background: #fef5e8;
+      border-radius: 20px;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 4px solid #e07c2c;
+    }
+
+    .payment-details p {
+      margin: 0.5rem 0;
+      font-family: monospace;
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #e07c2c;
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background: #c4451b;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #e07c2c;
+      color: #e07c2c;
+      margin-left: 1rem;
+    }
+
+    .btn-outline:hover {
+      background: #e07c2c;
+      color: white;
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      margin-top: 1rem;
+    }
+
+    .whatsapp-btn:hover {
+      background: #128C7E;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .thankyou-card {
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .button-group {
+        flex-direction: column;
+      }
+      .btn-outline {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="thankyou-container">
+    <div class="thankyou-card">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      
+      <h1>Thank You! 🎉</h1>
+      <p style="font-size: 1.1rem; color: #6b5a47;">Your enrollment request has been received successfully!</p>
+      
+      <div class="price-badge">
+        Course Fee: ₦5,000
+      </div>
+
+      <div class="message-box">
+        <h3><i class="fas fa-gift"></i> What happens next?</h3>
+        <p>✅ You will receive payment details and access instructions on your <strong>Gmail and WhatsApp</strong> within the next hour.</p>
+        <p>✅ Check your spam folder if you don't see our email.</p>
+        <p>✅ Complete your payment to get instant access to:</p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #4a3b2c;">
+          <li>🎬 AI Cinematic Construction Module</li>
+          <li>✂️ CapCut Pro Editing Tutorials</li>
+          <li>📈 YouTube Channel Setup Guide</li>
+          <li>🎁 Bonus: 10+ CapCut Templates & AI Prompts</li>
+        </ul>
+      </div>
+
+      <div class="payment-details">
+        <p><strong>💳 Payment Information:</strong></p>
+        <p>Bank: First Bank of Nigeria</p>
+        <p>Account Name: AI Cinematic Academy</p>
+        <p>Account Number: 1234567890</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;">⚠️ Use your full name as reference when making payment</p>
+      </div>
+
+      <div class="button-group">
+        <a href="https://wa.me/2348012345678?text=I%20just%20submitted%20the%20enrollment%20form%20for%20the%20AI%20Cinematic%20Course" 
+           class="btn whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+        </a>
+        <a href="../" class="btn btn-outline">
+          <i class="fas fa-home"></i> Back to Home
+        </a>
+      </div>
+      
+      <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #8b765f;">
+        <i class="fas fa-envelope"></i> Support: support@aicinematic.com
+      </p>
+    </div>
+  </div>
+</body>
+</html>
