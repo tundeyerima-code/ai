@@ -287,6 +287,10 @@
       font-size: 1.2rem;
       padding: 1rem;
     }
+    button[type="submit"]:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
 
     .article-spice {
       background: linear-gradient(120deg, #fff3e8, #ffffff);
@@ -306,6 +310,22 @@
       border-top: 1px solid #ffe0cf;
       margin-top: 2rem;
       color: #8b765f;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     @media (max-width: 700px) {
@@ -438,7 +458,7 @@
     <p style="margin-top: 1rem;"><strong>🚀 Limited bonus:</strong> Enroll now and receive 10+ cinematic CapCut templates & AI prompt library for free!</p>
   </div>
 
-  <!-- FORM SECTION -->
+  <!-- FORM SECTION with AJAX submission -->
   <div id="form">
     <div class="form-section">
       <h2 class="section-title" style="margin-bottom: 1rem;">📝 Secure Your Spot</h2>
@@ -448,7 +468,8 @@
         <i class="fas fa-exclamation-triangle"></i> DISCLAIMER: If you are NOT ready to make payment of ₦5,000, please do NOT fill this form. By submitting, you confirm serious intent to enroll.
       </div>
 
-      <form id="enrollForm" action="https://formspree.io/f/xgoqznyp" method="POST">
+      <!-- Form with NO action - handled by JavaScript -->
+      <form id="enrollForm">
         <div class="form-row">
           <div class="form-group">
             <label for="fullname">Full Name *</label>
@@ -468,13 +489,9 @@
           <textarea rows="2" id="message" name="message" placeholder="I'm excited to learn AI cinematic construction..."></textarea>
         </div>
         
-        <!-- Redirect to thank you page folder after successful submission -->
-        <input type="hidden" name="_redirect" value="https://tundeyerima-code.github.io/ai/thank-you/">
-        
-        <input type="hidden" name="_subject" value="New AI Course Enrollment!">
-        <input type="text" name="_gotcha" style="display:none">
-        
-        <button type="submit" class="btn" id="submitBtn"><i class="fab fa-whatsapp"></i> Enroll Now - ₦5,000</button>
+        <button type="submit" class="btn" id="submitBtn">
+          <i class="fab fa-whatsapp"></i> Enroll Now - ₦5,000
+        </button>
       </form>
       <p style="margin-top: 1rem; font-size: 0.8rem; text-align: center;">✅ After submitting, you'll be redirected to our thank you page.</p>
     </div>
@@ -499,6 +516,66 @@
         }
       }
     });
+  });
+
+  // Handle form submission with AJAX - redirects to YOUR thank you page
+  const form = document.getElementById('enrollForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Validate form
+    const name = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('gmail').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    
+    if (!name || !email || !whatsapp) {
+      alert('Please fill all required fields: Full Name, Gmail, and WhatsApp number.');
+      return;
+    }
+    
+    if (!email.includes('@') || !email.includes('.')) {
+      alert('Please enter a valid Gmail address.');
+      return;
+    }
+    
+    // Show loading state
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+    submitBtn.disabled = true;
+    
+    // Prepare form data
+    const formData = new FormData(form);
+    
+    try {
+      // Send to Formspree
+      const response = await fetch('https://formspree.io/f/xgoqznyp', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        // Success! Redirect to YOUR thank you page
+        // Change this URL to your actual thank you page URL
+        window.location.href = './thank-you/';
+        // OR if you're testing locally: window.location.href = '/thank-you/';
+      } else {
+        // Handle error
+        const errorData = await response.json();
+        alert('Submission failed: ' + (errorData.error || 'Please try again.'));
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Network error. Please check your connection and try again.');
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
   });
 </script>
 </body>
