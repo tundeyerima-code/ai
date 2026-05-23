@@ -331,6 +331,17 @@
       color: #8b765f;
     }
 
+    /* Success message */
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 28px;
+      margin-bottom: 1rem;
+      text-align: center;
+      display: none;
+    }
+
     @media (max-width: 700px) {
       .hero-text h1 {
         font-size: 2.2rem;
@@ -466,24 +477,31 @@
     <p style="margin-top: 1rem;"><strong>🚀 Limited bonus:</strong> Enroll now and receive 10+ cinematic CapCut templates & AI prompt library for free!</p>
   </div>
 
-  <!-- FORM SECTION with disclaimer & redirect (thank you page) -->
+  <!-- FORM SECTION with Formspree - YOUR ENDPOINT INTEGRATED -->
   <div id="form">
     <div class="form-section">
       <h2 class="section-title" style="margin-bottom: 1rem;">📝 Secure Your Spot</h2>
       <p>Course fee: <strong>₦5,000 only</strong> (one-time payment, lifetime access). Fill the form and you'll be redirected to payment/thank you page details.</p>
+      
       <div class="disclaimer">
         <i class="fas fa-exclamation-triangle"></i> DISCLAIMER: If you are NOT ready to make payment of ₦5,000, please do NOT fill this form. By submitting, you confirm serious intent to enroll.
       </div>
 
+      <!-- Success message (hidden by default) -->
+      <div id="successMessage" class="success-message">
+        ✓ Form submitted successfully! Redirecting...
+      </div>
+
+      <!-- YOUR FORMSPREE ENDPOINT IS HERE -->
       <form id="enrollForm" action="https://formspree.io/f/xgoqznyp" method="POST">
         <div class="form-row">
           <div class="form-group">
             <label for="fullname">Full Name *</label>
-            <input type="text" id="fullname" name="fullname" placeholder="e.g., Chinedu Okonkwo" required>
+            <input type="text" id="fullname" name="name" placeholder="e.g., Chinedu Okonkwo" required>
           </div>
           <div class="form-group">
             <label for="gmail">Gmail Address *</label>
-            <input type="email" id="gmail" name="gmail" placeholder="you@gmail.com" required>
+            <input type="email" id="gmail" name="email" placeholder="you@gmail.com" required>
           </div>
         </div>
         <div class="form-group">
@@ -492,8 +510,19 @@
         </div>
         <div class="form-group">
           <label for="message">Anything you'd like to ask? (optional)</label>
-          <textarea rows="2" id="message" placeholder="I'm excited to learn AI cinematic construction..."></textarea>
+          <textarea rows="2" id="message" name="message" placeholder="I'm excited to learn AI cinematic construction..."></textarea>
         </div>
+        
+        <!-- Redirect to thank you page after successful submission -->
+        <!-- Note: Create a thankyou.html file or remove this line to show default Formspree thank you -->
+        <input type="hidden" name="_redirect" value="https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO/thankyou.html">
+        
+        <!-- Optional: Email subject -->
+        <input type="hidden" name="_subject" value="New AI Course Enrollment!">
+        
+        <!-- Spam prevention -->
+        <input type="text" name="_gotcha" style="display:none">
+        
         <button type="submit" class="btn" id="submitBtn"><i class="fab fa-whatsapp"></i> Enroll Now - ₦5,000</button>
       </form>
       <p style="margin-top: 1rem; font-size: 0.8rem; text-align: center;">✅ After submitting, you'll receive payment details on WhatsApp & email. Secure your slot.</p>
@@ -507,70 +536,79 @@
 </footer>
 
 <script>
-  // When form is submitted, prevent default, save data (localStorage simulation or just redirect to thank you page)
-  // We'll use a clean thank you page URL: "thankyou.html" — but since it's a single page, we can create a dynamic redirect to same origin.
-  // For GitHub deployment we can create a separate thankyou page, but to be fully self contained we will redirect to a "thankyou" query or build a separate page? 
-  // For simplicity I generate a thank you URL with params and show an alert? better: redirect to a virtual page: "thank-you" using window.location.
-  // Provide a separate "thankyou.html" content? Since we need new URL, we will simulate: use same page but change window location to "thankyou.html"
-  // But we need ensure when deployed on github pages, we have actual thankyou.html or we can open a new page with custom message.
-  // To make it robust and full, we will redirect to a dedicated 'thankyou' page with URLSearchParams to display message.
-  // But the requirement says: redirect to a thank you page with new url. So we'll create a simple inline generation: redirect to "./thankyou.html?name=..."
-  // Since user might not have thankyou.html, we'll create a dynamic page using data URI? Better: we simulate by redirecting to current page with hash? Not professional.
-  // To fully satisfy deployment, I'll create an embedded 'ThankYou' page by redirecting to a new HTML content built on the fly? Actually easiest: 
-  // Use window.location.href = "./thankyou.html" but we also need to store name? I will create a hidden div? We'll make a proper redirect to a separate 'thank_you' page using a tiny built-in generator.
-  // Let's implement: when form submitted, prevent default, collect data and store in sessionStorage, then redirect to "thankyou.html". For demo standalone, I'll create a dummy thankyou page via JavaScript? 
-  // Since we need actual new URL, I will create an HTML string and use 'about:blank'? Not good. But for GitHub pages, you can just host index.html and create thankyou.html. But within single file requirement, we can't have two physical files? 
-  // However the requirement says "source code for landing page" — but can include a fake redirect to "thankyou.html" provided that if the user hosts on GitHub, they can create also a thankyou.html. But in many cases they expect just one html.
-  // To comply elegantly: we use JavaScript to build a new page via document.write? not recommended. alternative: navigate to a "data:text/html" with thankyou UI? Browsers block? Not reliable.
-  // I'll implement robustly: on submit, we add a hidden form submission record, and redirect to "./thankyou" but we show a modal that redirects to actual thankyou page? better: Use History API and show thankyou section but with URL change? That wouldn't be a "new URL" easily.
-  // The best compliant solution: create a second separate "thankyou.html" content? However this is a single code answer.
-  // To solve: I will programmatically open a new page with thank you content using window.open? Might cause popup block. Hmm.
-  // To be safe and respect requirement: I will create a hidden div template and redirect to "./thankyou.html", but also include a meta tag that if the page is not found, still friendly? Since the evaluator expects demo, we can simulate that after submit, I will redirect to the same origin but with a #thankyou and replace content? but not new URL. 
-  // Let's implement a clean solution: on form submit, store data and then set window.location.href = window.location.pathname.replace(/[^/]*$/, '') + 'thankyou.html'; but we cannot guarantee file exists. However we can embed thankyou content inside index and on load check if url includes 'thankyou' param? But easier: I'll create a dedicated redirect to a built-in thank you page using URL query ?status=thankyou and show thank you view with modified page but that preserves URL? Not new URL. Better to use pushState? Complexity.
-  // I choose to make a proper simulated thankyou page: when form submitted, we set localStorage flag and redirect to same page with "?thankyou=1" and on load, if thankyou param present, hide all content and display thank you message + new URL (since query changed, it's new URL). Good! That fully satisfies "new URL with thank you page" without requiring extra files. 
-  // Check if URL has thankyou param, render thank you UI. That's elegant! it's a new URL (different query string). 
-  if (window.location.search.includes('thankyou=1')) {
-    document.body.innerHTML = `
-      <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background:#fefbf5; flex-direction:column; text-align:center; padding:2rem; font-family: 'Inter',sans-serif;">
-        <div style="background:white; border-radius: 56px; padding: 3rem; max-width:550px; box-shadow:0 20px 30px rgba(0,0,0,0.05);">
-          <i class="fas fa-check-circle" style="font-size: 4rem; color:#2b9348;"></i>
-          <h1 style="margin: 1rem 0;">Thank You! 🎉</h1>
-          <p>Your enrollment request has been received. You'll get payment details & access instructions on your Gmail and WhatsApp within 1 hour.</p>
-          <p style="margin-top: 1rem;"><strong>Course fee ₦5,000</strong> — Please complete payment to start learning AI cinematic construction & YouTube automation.</p>
-          <a href="./" style="display:inline-block; margin-top:2rem; background:#f0a34b; padding:0.8rem 2rem; border-radius:40px; color:white; text-decoration:none;">← Back to Homepage</a>
-        </div>
-      </div>
-    `;
-    document.title = "Thank You | AI Cinematic Course";
-    // stop further script execution
-    throw new Error("Thank you page displayed");
-  }
-
-  // real form logic
+  // Handle form submission with AJAX for better user experience
   const form = document.getElementById('enrollForm');
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('fullname').value.trim();
-    const gmail = document.getElementById('gmail').value.trim();
-    const whatsapp = document.getElementById('whatsapp').value.trim();
-    
-    if (!name || !gmail || !whatsapp) {
-      alert("Please fill all required fields: Full name, Gmail, and WhatsApp number.");
-      return;
-    }
-    if (!gmail.includes('@') || !gmail.includes('.')) {
-      alert("Please enter a valid Gmail address.");
-      return;
-    }
-    if (whatsapp.length < 8) {
-      alert("Enter a valid WhatsApp number including country code.");
-      return;
-    }
-    
-    // store data for optional analytics
-    console.log(`Enrollment: ${name}, ${gmail}, ${whatsapp}`);
-    // Simulate saving — Redirect to thankyou URL with query param
-    window.location.href = window.location.pathname + '?thankyou=1';
+  const successMessage = document.getElementById('successMessage');
+  
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get submit button and disable it to prevent multiple submissions
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      submitBtn.disabled = true;
+      
+      // Collect form data
+      const formData = new FormData(form);
+      
+      try {
+        // Send to Formspree
+        const response = await fetch('https://formspree.io/f/xgoqznyp', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          // Show success message
+          successMessage.style.display = 'block';
+          
+          // Clear form
+          form.reset();
+          
+          // Redirect to thank you page after 2 seconds
+          setTimeout(() => {
+            // If you have a thank you page, uncomment the line below and update the URL
+            // window.location.href = 'thankyou.html';
+            
+            // If you don't have a thank you page yet, show an alert instead
+            alert('Thank you for your submission! You will receive payment details on your WhatsApp and Email within 24 hours.');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            successMessage.style.display = 'none';
+          }, 2000);
+        } else {
+          // Handle error
+          const errorData = await response.json();
+          alert('Submission failed: ' + (errorData.error || 'Please try again.'));
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Network error. Please check your connection and try again.');
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
+  
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('.nav-links a, .hero .btn').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
   });
 </script>
 </body>
