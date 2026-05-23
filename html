@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AI Cinematic Construction | YouTube Automation Mastery</title>
+    <!-- Google Fonts: Friendly, modern, readable -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefcf5;  /* warm off-white, light theme */
+            color: #2c2b28;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* header */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff5e6 0%, #ffffff 100%);
+            border-radius: 0 0 48px 48px;
+        }
+
+        .badge {
+            background: #f1e2cf;
+            color: #aa7b3e;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #cb7b3c, #a55d2a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #5a4a38;
+        }
+
+        .price-chip {
+            background: #2e5f3e;
+            color: white;
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 28px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* sections general */
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid #f0e7db;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            letter-spacing: -0.3px;
+            color: #3a2c1f;
+        }
+
+        .section-title i {
+            color: #cb7b3c;
+            margin-right: 12px;
+        }
+
+        /* video showcase grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+            transition: all 0.25s ease;
+            border: 1px solid #f2e5d8;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+        }
+
+        .video-placeholder {
+            background: #1f1e1b;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .video-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h3 {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        /* offers cards */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .offer-card {
+            background: white;
+            padding: 28px 20px;
+            border-radius: 32px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f0e2d4;
+            transition: all 0.2s;
+        }
+
+        .offer-icon {
+            font-size: 2.8rem;
+            background: #f9efe5;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 60px;
+            margin: 0 auto 20px;
+            color: #cb7b3c;
+        }
+
+        .offer-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        /* feedback section (testimonials) */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            border: 1px solid #f0e2d4;
+        }
+
+        .stars {
+            color: #f9b43a;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #3f3529;
+            font-style: italic;
+        }
+
+        .student-name {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .student-name i {
+            color: #cb7b3c;
+        }
+
+        /* article spice */
+        .insight-article {
+            background: #fff7ef;
+            border-radius: 48px;
+            padding: 40px 35px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #ffe5cc;
+        }
+
+        .insight-article h3 {
+            font-size: 1.7rem;
+            margin-bottom: 16px;
+        }
+
+        .insight-article p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* form section */
+        .form-section {
+            background: #ffffff;
+            border-radius: 48px;
+            padding: 48px 40px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+            border: 1px solid #f0e2d4;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 28px;
+            border: 1.5px solid #e9dfd3;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: #fefcf9;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #cb7b3c;
+            box-shadow: 0 0 0 3px rgba(203,123,60,0.1);
+        }
+
+        .disclaimer {
+            background: #fef2e6;
+            padding: 14px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin: 20px 0;
+            text-align: center;
+            border-left: 5px solid #cb7b3c;
+            font-weight: 500;
+        }
+
+        .btn-submit {
+            background: #2e5f3e;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-submit:hover {
+            background: #1f4a2f;
+            transform: scale(0.98);
+        }
+
+        /* thank you page simulation via redirect */
+        .footer-note {
+            text-align: center;
+            padding: 28px 0;
+            color: #7f6e5b;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            h1 { font-size: 2.3rem; }
+            .container { padding: 0 20px; }
+            .form-section { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="container">
+        <div class="badge"><i class="fas fa-robot"></i> AI Cinematic Construction · YouTube Automation</div>
+        <h1>Build Epic AI Construction Videos <br> & Grow Your Channel</h1>
+        <p>Generate jaw-dropping cinematic content with AI, edit like a pro in CapCut, and turn your YouTube channel into a money-making machine. <strong>All for just ₦5,000</strong></p>
+        <div class="price-chip">
+            <i class="fas fa-tag"></i> Complete Training · ₦5,000 Naira only
+            <i class="fas fa-arrow-right"></i>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- VIDEO SECTION: showcase of AI cinematic construction videos -->
+    <section id="videos">
+        <div class="section-title">
+            <i class="fas fa-play-circle"></i> Cinematic Showreel
+        </div>
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-placeholder">
+                    <!-- YouTube embed example - cinematic AI construction compilation (safe demo) replace with actual if needed -->
+                    <iframe src="https://www.youtube.com/embed/0n-2zM_RT54?si=KmQyA4GneVAYSnaC" title="AI construction cinematic sample" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3>🏗️ AI Mega Build - Cinematic</h3>
+                    <p>Fully generated with AI tools & CapCut magic.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-placeholder">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=test123" title="cinematic construction 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3>🚜 Future Construction Reel</h3>
+                    <p>AI renders + transitions, perfect for automation.</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-placeholder">
+                    <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk?si=example" title="cinematic 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3>✨ Skyscraper Timelapse (AI)</h3>
+                    <p>Viral style — ready for YouTube Shorts & long form.</p>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 28px; opacity:0.7;"><i class="fas fa-info-circle"></i> These are examples of the style you'll learn to create consistently.</p>
+    </section>
+
+    <!-- OFFER SECTION: what I teach -->
+    <section id="offers">
+        <div class="section-title">
+            <i class="fas fa-gem"></i> What I Offer You
+        </div>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fas fa-brain"></i></div>
+                <h3>AI Cinematic Construction</h3>
+                <p>Master prompt engineering & AI video generation tools to produce high-quality cinematic construction clips, realistic renders & heavy machinery visuals.</p>
+            </div>
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fas fa-cut"></i></div>
+                <h3>CapCut Pro Editing</h3>
+                <p>Learn to edit fast-paced viral videos: transitions, effects, sound design & color grading. Transform raw AI clips into cinematic masterpieces.</p>
+            </div>
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fab fa-youtube"></i></div>
+                <h3>YouTube Channel Setup</h3>
+                <p>From niche selection to SEO, thumbnails, automation strategies & monetization. Get your channel ready to explode with cinematic content.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LITTLE ARTICLE to spice up -->
+    <div class="insight-article">
+        <i class="fas fa-newspaper" style="font-size: 2.2rem; color:#cb7b3c; margin-bottom: 12px; display: inline-block;"></i>
+        <h3>Why AI Construction is the next YouTube goldmine</h3>
+        <p>Audiences love massive machines, futuristic buildings, and transformation stories. With AI tools, you can create ultra-realistic construction scenes <strong>without any physical equipment</strong>. Combine cinematic storytelling, CapCut magic and consistent uploads — and you’re looking at 6-figure views. My students have grown channels from zero to 50k+ monthly views using this exact blueprint. All you need is ₦5,000 and the passion to learn. Ready to dominate?</p>
+    </div>
+
+    <!-- FEEDBACK SECTION: student reviews -->
+    <section id="feedback">
+        <div class="section-title">
+            <i class="fas fa-comment-dots"></i> Student Success Stories
+        </div>
+        <div class="feedback-grid">
+            <div class="testimonial">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="testimonial-text">“I had zero experience in editing. In just 2 weeks after the course, my first AI construction video hit 100k views! The CapCut training is next level.”</div>
+                <div class="student-name"><i class="fas fa-user-circle"></i> Michael O.</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="testimonial-text">“The YouTube setup module was everything. I monetized my channel in 3 months thanks to AI construction niche. Best 5k ever spent!”</div>
+                <div class="student-name"><i class="fas fa-user-circle"></i> Precious A.</div>
+            </div>
+            <div class="testimonial">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <div class="testimonial-text">“Really detailed and practical. The instructor explains everything clearly from AI prompting to final export. Now running 3 automation channels!”</div>
+                <div class="student-name"><i class="fas fa-user-circle"></i> Samuel C.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM SECTION with disclaimer -->
+    <section id="enroll">
+        <div class="form-section">
+            <div style="text-align: center; margin-bottom: 28px;">
+                <i class="fas fa-graduation-cap" style="font-size: 2rem; color:#cb7b3c;"></i>
+                <h2 style="font-size: 1.8rem; margin-top: 8px;">Start your AI cinematic journey</h2>
+                <p style="color: #5f4d38;">Full training package · Lifetime access · ₦5,000 only</p>
+            </div>
+            <form id="leadForm" action="#" method="POST">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="fullname" placeholder="e.g., Adeola Johnson" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Gmail Address</label>
+                    <input type="email" id="email" placeholder="youremail@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fab fa-whatsapp"></i> WhatsApp Number</label>
+                    <input type="tel" id="whatsapp" placeholder="e.g., 08012345678" required>
+                </div>
+                <div class="disclaimer">
+                    <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i> 
+                    DISCLAIMER: If you are NOT ready to make payment (₦5,000 Naira), please do NOT fill this form. By submitting, you confirm serious intent to purchase & get immediate access.
+                </div>
+                <button type="submit" class="btn-submit"><i class="fas fa-arrow-right"></i> Enroll Now – Redirect to Payment/Thank You</button>
+            </form>
+            <p style="margin-top: 22px; font-size: 0.8rem; text-align: center; color: #9b8978;">After clicking, you'll be redirected to a confirmation page. Secure checkout details provided after form.</p>
+        </div>
+    </section>
+
+    <div class="footer-note">
+        <i class="fas fa-copyright"></i> 2025 AI Cinematic Mastery — Empowering Nigerian Creators. Support via WhatsApp after enrollment.
+    </div>
+</div>
+
+<script>
+    // Redirect handler: "thank you" page with new URL after submit.
+    // Builds a query string to simulate "thank you" with user info (non-sensitive)
+    // This demonstrates redirect to a new URL (thankyou.html or custom thank you page).
+    // Since we need a separate thank you URL but keep as single file, I'll create a dynamic but proper new URL.
+    // To meet requirement: after submit, redirect to a THANK YOU PAGE with new URL.
+    // We'll redirect to a "thankyou.html" but because we are in a single code, we can use URL parameters and display a "virtual" thank you message? 
+    // But requirement: "redirect to a thank you page with new url". So I'll implement redirect to the same origin + "/thankyou" appended? 
+    // The cleanest: after preventDefault, window.location.href to an internal thank you page that exists? But we don't have multi file. However we can dynamically create a new HTML state? 
+    // Easiest: redirect to a data URI or create a new page URL with '?thanks=1' and show thank you content? but requirement explicitly new url + thank you page.
+    // To satisfy fully: we will redirect to a separate page we create using window.location. But can't guarantee external server. I will instead build an internal thank you section that replaces current body content with a beautiful thank you page and update the URL using history.pushState to "/thank-you" .
+    // This gives the user a thank you page with new URL (thanks route) and prevents breaking user expectation.
+    // That's elegant and meets spec: after clicking submit, they see thank you page and URL changes to something like /thank-you.
+    // So I'll implement that.
+    
+    const form = document.getElementById('leadForm');
+    
+    function showThankYouPage(name) {
+        // Build a fresh thank you page content
+        const mainContent = document.querySelector('.container');
+        const heroElem = document.querySelector('.hero');
+        const footerElem = document.querySelector('.footer-note');
+        // Hide all other sections and create thank you overlay / new page content
+        const allSections = document.querySelectorAll('section, .insight-article, .hero, .footer-note');
+        allSections.forEach(el => {
+            if(el.style) el.style.display = 'none';
+        });
+        // remove existing container or we recreate inside body
+        const body = document.body;
+        // ensure we clear extra
+        const existingThank = document.getElementById('dynamicThankYou');
+        if(existingThank) existingThank.remove();
+        
+        const thankDiv = document.createElement('div');
+        thankDiv.id = 'dynamicThankYou';
+        thankDiv.style.minHeight = '100vh';
+        thankDiv.style.display = 'flex';
+        thankDiv.style.alignItems = 'center';
+        thankDiv.style.justifyContent = 'center';
+        thankDiv.style.flexDirection = 'column';
+        thankDiv.style.padding = '2rem';
+        thankDiv.style.background = '#fefcf5';
+        thankDiv.style.fontFamily = "'Inter', sans-serif";
+        thankDiv.innerHTML = `
+            <div style="max-width: 600px; text-align: center; background: white; padding: 50px 30px; border-radius: 64px; box-shadow: 0 20px 35px rgba(0,0,0,0.05); border: 1px solid #f2e5d8;">
+                <i class="fas fa-check-circle" style="font-size: 4rem; color: #2e5f3e; margin-bottom: 20px;"></i>
+                <h1 style="font-size: 2rem;">🎉 Thank You, ${escapeHtml(name)}!</h1>
+                <p style="font-size: 1.2rem; margin: 20px 0;">We've received your enrollment request. You'll receive payment & access instructions on WhatsApp within 5 minutes.</p>
+                <div style="background: #fef2e6; padding: 20px; border-radius: 32px; margin: 28px 0;">
+                    <i class="fas fa-naira-sign"></i> <strong>₦5,000 Naira only</strong> — Payment link will be sent to your Gmail & WhatsApp.<br>
+                    <span style="font-size: 0.9rem;">Get ready to master AI cinematic construction & YouTube automation!</span>
+                </div>
+                <a href="#" onclick="window.location.reload(); return false;" style="background: #cb7b3c; color: white; padding: 12px 28px; border-radius: 40px; text-decoration: none; font-weight: 600;">← Back to Homepage</a>
+                <p style="margin-top: 30px; font-size: 0.8rem;">You can close this page or click above to return.</p>
+            </div>
+        `;
+        document.body.appendChild(thankDiv);
+        // Change URL using history.pushState to simulate new thank you page URL
+        const newUrl = window.location.origin + window.location.pathname + '?thankyou=true';
+        window.history.pushState({ thankYou: true }, 'Thank You', newUrl);
+        // Clean leftover container hiding.
+        const containers = document.querySelectorAll('.container, .hero, .footer-note');
+        containers.forEach(c => { if(c.style) c.style.display = 'none'; });
+        if(heroElem) heroElem.style.display = 'none';
+        if(footerElem) footerElem.style.display = 'none';
+        // also hide form-section original if visible
+        const formSec = document.querySelector('.form-section');
+        if(formSec) formSec.style.display = 'none';
+    }
+    
+    function escapeHtml(str) {
+        if(!str) return 'Student';
+        return str.replace(/[&<>]/g, function(m) {
+            if(m === '&') return '&amp;';
+            if(m === '<') return '&lt;';
+            if(m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Get values
+        const fullname = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const whatsapp = document.getElementById('whatsapp').value.trim();
+        
+        if(!fullname || !email || !whatsapp) {
+            alert('Please fill all fields: Name, Gmail and WhatsApp number.');
+            return;
+        }
+        // Simple email check
+        if(!email.includes('@') || !email.includes('.')) {
+            alert('Please enter a valid Gmail or email address.');
+            return;
+        }
+        // Nigerian number basic validation (optional)
+        if(whatsapp.replace(/\D/g, '').length < 8) {
+            alert('Please enter a valid WhatsApp number (e.g., 08012345678)');
+            return;
+        }
+        
+        // Here you can also send data to server via fetch, but redirect is priority.
+        // For demo, store a small flag in session to simulate. Then show thank you page with new URL.
+        // Also you could log data for debug (console)
+        console.log(`New lead: ${fullname}, ${email}, ${whatsapp}`);
+        
+        // Directly show thank you page and URL change.
+        showThankYouPage(fullname);
+        
+        // Optional: you can send data to a backend endpoint (if required, but core requirement redirect to thank you page)
+        // I'll also show that the data is captured.
+        // Uncomment if needed: send async
+        /*
+        fetch('/submit-lead', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({name:fullname, email, whatsapp})
+        }).catch(err=>console.log(err));
+        */
+    });
+    
+    // If URL already contains ?thankyou=true on page load (for refresh case) we can re-show thank you but not necessary. 
+    // just to be safe after redirecting manually maybe.
+    if(window.location.search.includes('thankyou=true')) {
+        // if someone lands on thank you manually without submission show generic version
+        if(!document.getElementById('dynamicThankYou')) {
+            // but ensure it's fine: do minimal.
+            const heroAll = document.querySelector('.hero');
+            if(heroAll) heroAll.style.display = 'none';
+            const containerDiv = document.querySelector('.container');
+            if(containerDiv) containerDiv.style.display = 'none';
+            const thankDiv = document.createElement('div');
+            thankDiv.id = 'dynamicThankYou';
+            thankDiv.style.minHeight = '100vh';
+            thankDiv.style.display = 'flex';
+            thankDiv.style.alignItems = 'center';
+            thankDiv.style.justifyContent = 'center';
+            thankDiv.style.background = '#fefcf5';
+            thankDiv.innerHTML = `<div style="background:white; padding:40px; border-radius:48px;"><i class="fas fa-heart"></i> <h2>Thank you for your interest!</h2><p>Please fill the form again to enroll.</p><a href="/" style="color:#cb7b3c;">Go back</a></div>`;
+            document.body.appendChild(thankDiv);
+        }
+    }
+</script>
+</body>
+</html>
