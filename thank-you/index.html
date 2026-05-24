@@ -1,237 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You - AI Cinematic Course</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Submitting!</title>
+    
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1968345360441714');
+    fbq('track', 'PageView');
+    // Track Lead event since they just submitted a form
+    fbq('track', 'Lead'); 
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1968345360441714&ev=PageView&noscript=1"
+    /></noscript>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #fefbf5 0%, #fff7f0 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .thankyou-container {
-      max-width: 700px;
-      width: 100%;
-      animation: fadeInUp 0.6s ease-out;
-    }
+        .container {
+            background: #ffffff;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px 30px;
+            text-align: center;
+        }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        /* Success Checkmark Styling */
+        .success-mark {
+            width: 80px;
+            height: 80px;
+            background-color: #e6f7ed;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
 
-    .thankyou-card {
-      background: white;
-      border-radius: 48px;
-      padding: 3rem;
-      text-align: center;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
-      border: 1px solid #ffe2cf;
-    }
+        .success-mark svg {
+            width: 40px;
+            height: 40px;
+            color: #24b47e;
+        }
 
-    .success-icon {
-      width: 100px;
-      height: 100px;
-      background: #d4edda;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-    }
+        h1 {
+            color: #1a1a1a;
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
 
-    .success-icon i {
-      font-size: 3.5rem;
-      color: #2b9348;
-    }
+        p.subtitle {
+            color: #666666;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #2d2b26;
-      margin-bottom: 1rem;
-    }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eef2f5;
+            margin-bottom: 32px;
+        }
 
-    .price-badge {
-      background: linear-gradient(135deg, #c4451b, #e98a3e);
-      color: white;
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin: 1rem 0;
-    }
+        /* WhatsApp Div Styling */
+        .whatsapp-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-    .message-box {
-      background: #fff6ed;
-      border-radius: 28px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      text-align: left;
-    }
+        .whatsapp-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.1);
+        }
 
-    .message-box h3 {
-      color: #c4451b;
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
-    }
+        .whatsapp-box p {
+            color: #166534;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
 
-    .message-box p {
-      color: #4a3b2c;
-      line-height: 1.6;
-      margin-bottom: 0.8rem;
-    }
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
 
-    .payment-details {
-      background: #fef5e8;
-      border-radius: 20px;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-left: 4px solid #e07c2c;
-    }
+        .whatsapp-btn:hover {
+            background-color: #20ba5a;
+        }
 
-    .payment-details p {
-      margin: 0.5rem 0;
-      font-family: monospace;
-      font-size: 1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #e07c2c;
-      color: white;
-      padding: 1rem 2.5rem;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 1rem;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .btn:hover {
-      background: #c4451b;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #e07c2c;
-      color: #e07c2c;
-      margin-left: 1rem;
-    }
-
-    .btn-outline:hover {
-      background: #e07c2c;
-      color: white;
-    }
-
-    .whatsapp-btn {
-      background: #25D366;
-      margin-top: 1rem;
-    }
-
-    .whatsapp-btn:hover {
-      background: #128C7E;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-
-    @media (max-width: 600px) {
-      .thankyou-card {
-        padding: 2rem;
-      }
-      h1 {
-        font-size: 1.8rem;
-      }
-      .button-group {
-        flex-direction: column;
-      }
-      .btn-outline {
-        margin-left: 0;
-      }
-    }
-  </style>
+        .whatsapp-btn svg {
+            margin-right: 8px;
+            fill: currentColor;
+        }
+    </style>
 </head>
 <body>
-  <div class="thankyou-container">
-    <div class="thankyou-card">
-      <div class="success-icon">
-        <i class="fas fa-check-circle"></i>
-      </div>
-      
-      <h1>Thank You! 🎉</h1>
-      <p style="font-size: 1.1rem; color: #6b5a47;">Your enrollment request has been received successfully!</p>
-      
-      <div class="price-badge">
-        Course Fee: ₦5,000
-      </div>
 
-      <div class="message-box">
-        <h3><i class="fas fa-gift"></i> What happens next?</h3>
-        <p>✅ You will receive payment details and access instructions on your <strong>Gmail and WhatsApp</strong> within the next hour.</p>
-        <p>✅ Check your spam folder if you don't see our email.</p>
-        <p>✅ Complete your payment to get instant access to:</p>
-        <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: #4a3b2c;">
-          <li>🎬 AI Cinematic Construction Module</li>
-          <li>✂️ CapCut Pro Editing Tutorials</li>
-          <li>📈 YouTube Channel Setup Guide</li>
-          <li>🎁 Bonus: 10+ CapCut Templates & AI Prompts</li>
-        </ul>
-      </div>
+    <div class="container">
+        <div class="success-mark">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+        </div>
 
-      <div class="payment-details">
-        <p><strong>💳 Payment Information:</strong></p>
-        <p>Bank: First Bank of Nigeria</p>
-        <p>Account Name: AI Cinematic Academy</p>
-        <p>Account Number: 1234567890</p>
-        <p style="font-size: 0.85rem; margin-top: 0.5rem;">⚠️ Use your full name as reference when making payment</p>
-      </div>
+        <h1>Thank you for submitting your form!</h1>
+        <p class="subtitle">We will contact you shortly with more details.</p>
 
-      <div class="button-group">
-        <a href="https://wa.me/2348012345678?text=I%20just%20submitted%20the%20enrollment%20form%20for%20the%20AI%20Cinematic%20Course" 
-           class="btn whatsapp-btn" target="_blank">
-          <i class="fab fa-whatsapp"></i> Contact on WhatsApp
-        </a>
-        <a href="../" class="btn btn-outline">
-          <i class="fas fa-home"></i> Back to Home
-        </a>
-      </div>
-      
-      <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #8b765f;">
-        <i class="fas fa-envelope"></i> Support: support@aicinematic.com
-      </p>
+        <hr>
+
+        <div class="whatsapp-box">
+            <p>Want to get a head start? Join our community to master the algorithm!</p>
+            <a href="#" class="whatsapp-btn" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.411 0 11.981 0c3.186.001 6.182 1.24 8.434 3.496 2.253 2.256 3.491 5.253 3.491 8.442 0 6.574-5.351 11.921-11.922 11.921-1.995-.001-3.956-.5-5.699-1.451L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.437 0 9.862-4.406 9.865-9.82.001-2.623-1.02-5.088-2.877-6.948-1.856-1.86-4.324-2.883-6.953-2.884-5.442 0-9.866 4.407-9.869 9.822-.001 1.83.501 3.61 1.453 5.18l-.988 3.605 3.694-.966zm11.662-5.187c-.234-.117-1.383-.683-1.597-.762-.214-.078-.37-.117-.526.117-.156.234-.604.762-.741.918-.137.156-.273.176-.507.059-.234-.117-.988-.364-1.884-1.163-.696-.621-1.165-1.389-1.302-1.623-.137-.234-.014-.361.103-.478.105-.105.234-.273.351-.41.117-.137.156-.234.234-.39.078-.156.039-.293-.02-.41-.059-.117-.526-1.268-.72-1.734-.19-.455-.383-.393-.526-.4l-.449-.007c-.156 0-.41.059-.624.293-.214.234-.819.801-.819 1.953 0 1.153.839 2.266.956 2.422.117.156 1.65 2.52 4.0 3.533.56.242 1.0.386 1.342.495.564.179 1.077.154 1.482.094.453-.068 1.383-.566 1.578-1.113.195-.547.195-1.016.137-1.113-.058-.097-.214-.156-.449-.273z"/></svg>
+                Click here to join our WhatsApp channel to learn more YouTube Automation
+            </a>
+        </div>
     </div>
-  </div>
+
 </body>
 </html>
